@@ -174,8 +174,8 @@ flowchart TD
     D --> E{Is income > bracket.min?}
     E -->|No| F[Skip bracket]
     E -->|Yes| G[Calculate taxable amount]
-    G --> H[taxable = min(income, bracket.max) - bracket.min]
-    H --> I[tax += taxable × bracket.rate]
+    G --> H["taxable = min(income, bracket.max) - bracket.min"]
+    H --> I["tax += taxable × bracket.rate"]
     I --> J[Next bracket]
     F --> J
     J --> K{More brackets?}
