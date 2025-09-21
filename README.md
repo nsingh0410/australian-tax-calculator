@@ -142,6 +142,12 @@ CREATE TABLE tax_brackets (
 );
 ```
 
+### Frontend Interface Example
+
+Realtime React application that displays the current tax rates based on income
+![Tax Calculator Interface](images/frontend_interface.png)
+
+
 ## System Workflow
 
 ### Frontend to Backend Flow
