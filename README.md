@@ -12,6 +12,8 @@ A comprehensive tax calculation system with CLI, GraphQL API, and React frontend
 - [GraphQL Operations](#graphql-operations)
 - [Running Tests](#running-tests)
 - [Development Guide](#development-guide)
+- [Frontend Interface Example](#frontend-interface-example)
+- [Backend Interface Example](#backend-interface-example)
 
 ## Project Overview
 
@@ -144,9 +146,13 @@ CREATE TABLE tax_brackets (
 
 ### Frontend Interface Example
 
-Realtime React application that displays the current tax rates based on income
+Realtime React application that displays the selected tax rates based on income
 ![Tax Calculator Interface](images/frontend_interface.png)
 
+### Backend Interface Example
+
+CLI Script to display selected tax rates based on income
+![Tax Calculator Interface](images/backend_interface.png)
 
 ## System Workflow
 
