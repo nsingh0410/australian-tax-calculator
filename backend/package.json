@@ -1,0 +1,48 @@
+{
+  "name": "australian-tax-calculator-dual",
+  "version": "1.0.0",
+  "description": "Australian tax calculator with CLI and GraphQL API interfaces",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start:cli": "node dist/index.js",
+    "start:graphql": "node dist/graphql-server.js",
+    "dev:cli": "ts-node src/index.ts",
+    "dev:graphql": "ts-node src/graphql-server.ts",
+    "test": "jest",
+    "clean": "rm -rf dist",
+    "db:setup": "ts-node src/scripts/setup-database.ts",
+    "db:seed": "ts-node src/scripts/seed-database.ts"
+  },
+  "keywords": [
+    "tax",
+    "calculator",
+    "australia",
+    "ato",
+    "mysql",
+    "graphql",
+    "cli"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "^10.0.25",
+    "apollo-server-express": "^3.13.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "graphql": "^16.11.0",
+    "mysql2": "^3.6.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

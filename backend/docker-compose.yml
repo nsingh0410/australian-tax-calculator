@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: tax_calculator_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword123
+      MYSQL_DATABASE: tax_calculator
+      MYSQL_USER: taxapp
+      MYSQL_PASSWORD: taxpassword123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - tax-calculator-network
+
+  # GraphQL API service
+  graphql-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.graphql
+    container_name: tax_calculator_graphql
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=tax_calculator
+      - DB_USER=taxapp
+      - DB_PASSWORD=taxpassword123
+      - NODE_ENV=development
+      - ENABLE_INTROSPECTION=true
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
+    networks:
+      - tax-calculator-network
+
+networks:
+  tax-calculator-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
